@@ -16,7 +16,13 @@ LABEL maintainer="frank.foerster@ime.fraunhofer.de" \
 
 RUN apt update && \
     apt --yes install \
+       software-properties-common \
        wget && \
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 && \
+    add-apt-repository 'deb [arch=amd64,i386] https://cran.rstudio.com/bin/linux/ubuntu xenial/' && \
+    apt update && \
+    apt install --yes \
+       r-base && \
     apt --yes autoremove \
     && apt autoclean \
     && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log
