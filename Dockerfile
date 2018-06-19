@@ -16,7 +16,7 @@ LABEL maintainer="frank.foerster@ime.fraunhofer.de" \
 
 RUN apt update && \
     apt --yes install \
-       wget \
+       wget && \
     apt --yes autoremove \
     && apt autoclean \
     && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log
