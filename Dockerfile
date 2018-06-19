@@ -23,7 +23,8 @@ RUN apt update && \
     add-apt-repository 'deb [arch=amd64,i386] https://cran.rstudio.com/bin/linux/ubuntu '${osversion}'/' && \
     apt update && \
     apt install --yes \
-       r-base && \
+       r-base \
+       r-base-dev && \
     apt --yes autoremove \
     && apt autoclean \
     && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log
