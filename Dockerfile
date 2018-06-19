@@ -30,6 +30,8 @@ RUN apt update && \
     && apt autoclean \
     && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log
 
+RUN Rscript -e 'source("https://bioconductor.org/biocLite.R"); biocLite("DSS",suppressUpdates=T, ask=F, suppressAutoUpdate=T);'
+
 # Setup of /data volume and set it as working directory
 VOLUME /data
 WORKDIR /data
