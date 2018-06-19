@@ -4,8 +4,9 @@ FROM ubuntu:${osversion}
 ARG VERSION=master
 ARG VCS_REF
 ARG BUILD_DATE
+ARG osversion
 
-RUN echo "VCS_REF: "${VCS_REF}", BUILD_DATE: "${BUILD_DATE}", VERSION: "${VERSION}
+RUN echo "osversion: "${osversion}", VCS_REF: "${VCS_REF}", BUILD_DATE: "${BUILD_DATE}", VERSION: "${VERSION}
 
 LABEL maintainer="frank.foerster@ime.fraunhofer.de" \
       description="Dockerfile providing the DSS differential methylation package for GNU R" \
@@ -19,7 +20,7 @@ RUN apt update && \
        software-properties-common \
        wget && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 && \
-    add-apt-repository 'deb [arch=amd64,i386] https://cran.rstudio.com/bin/linux/ubuntu xenial/' && \
+    add-apt-repository 'deb [arch=amd64,i386] https://cran.rstudio.com/bin/linux/ubuntu '${osversion}'/' && \
     apt update && \
     apt install --yes \
        r-base && \
