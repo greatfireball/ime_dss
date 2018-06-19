@@ -24,6 +24,7 @@ RUN apt update && \
     add-apt-repository 'deb [arch=amd64,i386] https://cran.rstudio.com/bin/linux/ubuntu '${osversion}'/' && \
     apt update && \
     apt install --yes \
+       libcurl4-openssl-dev \
        r-base \
        r-base-dev && \
     apt --yes autoremove \
