@@ -32,6 +32,7 @@ RUN apt update && \
     && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log
 
 RUN Rscript -e 'source("https://bioconductor.org/biocLite.R"); biocLite("DSS",suppressUpdates=T, ask=F, suppressAutoUpdate=T);'
+RUN Rscript -e 'install.packages("tictoc")'
 
 # Setup of /data volume and set it as working directory
 VOLUME /data
