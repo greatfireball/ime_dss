@@ -17,6 +17,7 @@ LABEL maintainer="frank.foerster@ime.fraunhofer.de" \
 
 RUN apt update && \
     apt --yes install \
+       parallel \
        apt-transport-https \
        software-properties-common \
        wget && \
