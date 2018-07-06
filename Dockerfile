@@ -17,7 +17,6 @@ LABEL maintainer="frank.foerster@ime.fraunhofer.de" \
 
 RUN apt update && \
     apt --yes install \
-       parallel \
        apt-transport-https \
        software-properties-common \
        wget && \
@@ -28,6 +27,10 @@ RUN apt update && \
        libcurl4-openssl-dev \
        r-base \
        r-base-dev && \
+    wget -O - http://ftp.gnu.org/gnu/parallel/parallel-20180622.tar.bz2 | tar xjf - && \
+    cd parallel-20180622 && \
+    ./configure && make && make install && \
+    cd .. && rm -rf parallel-20180622 && \
     apt --yes autoremove \
     && apt autoclean \
     && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log
